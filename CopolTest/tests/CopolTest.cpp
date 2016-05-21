@@ -5,7 +5,7 @@
  *      Author: HBrand
  */
 
-#define First Boost Tests
+//#define BOOST_TEST_MODULE First Boost Tests
 #include <boost/test/included/unit_test.hpp>
 using namespace boost::unit_test;
 #include "../src/main.h"
@@ -13,7 +13,7 @@ using namespace boost::unit_test;
 void free_test_function()
 /* Compare with void free_test_function() */
 {
-  BOOST_TEST( true /* test assertion */ );
+  BOOST_CHECK( true /* test assertion */ );
 }
 
 void PolymerChain_CallGetLength_ReturnsOne()
