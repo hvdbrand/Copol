@@ -1,7 +1,7 @@
 INC = -I./src -I/usr/include
 
 CopolTest: CopolTest.o Molecule.o
-	ld $^ -o $@
+	c++ $^ -o $@
 
 CopolTest.o: tests/CopolTest.cpp
 	c++ ${INC} -c $^ -o $@
