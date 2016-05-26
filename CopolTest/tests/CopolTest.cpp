@@ -46,7 +46,7 @@ test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
    framework::master_test_suite().
           add( BOOST_TEST_CASE( &PolymerChain_GetNumberOfunits_ReturnsZero ) );
    framework::master_test_suite().
-          add( BOOST_TEST_CASE( &PolymerChain_GetNumberOfunits_ReturnsOne ) );
+      add( BOOST_TEST_CASE( &PolymerChain_GetNumberOfunits_ReturnsOne ) );
   return 0;
 }
 
