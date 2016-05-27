@@ -15,47 +15,95 @@ struct PolymerChain_Tests
 
 };
 
-BOOST_FIXTURE_TEST_SUITE(PolymerChain_TestSuite,PolymerChain_Tests)
+BOOST_FIXTURE_TEST_SUITE(PolymerChain_TestSuite,PolymerChain_Tests);
 
-void free_test_function()
-/* Compare with void free_test_function() */
+PolymerChain Initialize_PolymerChain_Unit4()
 {
-  BOOST_CHECK( true /* test assertion */ );
+	return PolymerChain(4);
 }
 
-void PolymerChain_CallGetLength_ReturnsOne()
+BOOST_AUTO_TEST_CASE(CallGetLength_InitializedWithSingleUnit_ReturnsOne)
 {
-	PolymerChain test(4);
+	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int len=test.get_length();
-	BOOST_CHECK_EQUAL(1,len);
+	unsigned int expected=1;
+	BOOST_CHECK_EQUAL(expected,len);
 }
 
-void PolymerChain_GetNumberOfunits_ReturnsZero()
+BOOST_AUTO_TEST_CASE(GetNumberOfunitsDiffers_InitializedWithSingleUnit_ReturnsZero)
 {
-	PolymerChain test(4);
+	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int units=test.get_units_of_type(3);
-	BOOST_CHECK_EQUAL(0,units);
+	unsigned int expected=0;
+	BOOST_CHECK_EQUAL(expected,units);
 }
 
-void PolymerChain_GetNumberOfunits_ReturnsOne()
+BOOST_AUTO_TEST_CASE(GetNumberOfUnitsSame_InitializedWithSingleUnit_ReturnsOne)
 {
-	PolymerChain test(4);
+	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int units=test.get_units_of_type(4);
-	BOOST_CHECK_EQUAL(1,units);
+	unsigned int expected=1;
+	BOOST_CHECK_EQUAL(expected,units);
 }
+
+BOOST_AUTO_TEST_CASE(GetInitialUnit_InitializedWithSingleUnit_ReturnsInitUnit)
+{
+	unsigned short initunit=4;
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	unsigned int retunit=test.get_initial_unit();
+	BOOST_CHECK_EQUAL(initunit,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedWithSingleUnit_ReturnsInitUnit)
+{
+	unsigned short initunit=4;
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	unsigned int retunit=test.get_ultimate_unit();
+	BOOST_CHECK_EQUAL(initunit,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetPenUltimateUnit_InitializedWithSingleUnit_ReturnsMinusOne)
+{
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	short retunit=test.get_penultimate_unit();
+	short expected=-1;
+	BOOST_CHECK_EQUAL(expected,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedAndAddedUnit_ReturnsMinusOne)
+{
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	unsigned short added_unit=2;
+	test.add_molecule_unit(added_unit);
+	short retunit=test.get_ultimate_unit();
+	BOOST_CHECK_EQUAL(added_unit,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetPenultimateUnit_InitializedAndAddedUnit_ReturnsMinusOne)
+{
+	unsigned short initunit=4;
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	unsigned short added_unit=2;
+	test.add_molecule_unit(added_unit);
+	short retunit=test.get_penultimate_unit();
+	BOOST_CHECK_EQUAL(initunit,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(ExactString_InitializedWithExactString_ReturnsSameString)
+{
+	string initstring="030512891601";
+	PolymerChain test(initstring);
+	string retstring=test.exact_string();
+	BOOST_CHECK_EQUAL(initstring,retstring);
+}
+
+
+BOOST_AUTO_TEST_SUITE_END();
 
 test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
 {
-   framework::master_test_suite().
-    add( BOOST_TEST_CASE( &free_test_function ) );
-   framework::master_test_suite().
-       add( BOOST_TEST_CASE( &PolymerChain_CallGetLength_ReturnsOne ) );
-   framework::master_test_suite().
-          add( BOOST_TEST_CASE( &PolymerChain_GetNumberOfunits_ReturnsZero ) );
-   framework::master_test_suite().
-      add( BOOST_TEST_CASE( &PolymerChain_GetNumberOfunits_ReturnsOne ) );
   return 0;
 }
 
-BOOST_AUTO_TEST_SUITE_END()
+
 
