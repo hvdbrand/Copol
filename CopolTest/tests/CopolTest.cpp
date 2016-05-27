@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE(GetUnitOne_Initialized_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
-	short retunit=test.get_unit(3);
+	short retunit=test.get_unit(0);
 	BOOST_CHECK_EQUAL(initunit,retunit);
 }
 
@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE(GetUnitOne_InitializedAndCopyConstruct_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test(Initialize_PolymerChain_Unit4());
-	short retunit=test.get_unit(3);
+	short retunit=test.get_unit(0);
 	BOOST_CHECK_EQUAL(initunit,retunit);
 }
 
