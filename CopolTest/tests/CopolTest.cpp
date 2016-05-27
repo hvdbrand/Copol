@@ -10,6 +10,13 @@
 using namespace boost::unit_test;
 #include "../src/main.h"
 
+struct PolymerChain_Tests
+{
+
+};
+
+BOOST_FIXTURE_TEST_SUITE(PolymerChain_TestSuite,PolymerChain_Tests)
+
 void free_test_function()
 /* Compare with void free_test_function() */
 {
@@ -50,4 +57,5 @@ test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
   return 0;
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 
