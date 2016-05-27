@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE(GetPenUltimateUnit_InitializedWithSingleUnit_ReturnsMinusOn
 	BOOST_CHECK_EQUAL(expected,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedAndAddedUnit_ReturnsMinusOne)
+BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedAndAddedUnit_ReturnsAddedUnit)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned short added_unit=2;
@@ -79,13 +79,37 @@ BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedAndAddedUnit_ReturnsMinusOne)
 	BOOST_CHECK_EQUAL(added_unit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetPenultimateUnit_InitializedAndAddedUnit_ReturnsMinusOne)
+BOOST_AUTO_TEST_CASE(GetPenultimateUnit_InitializedAndAddedUnit_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned short added_unit=2;
 	test.add_molecule_unit(added_unit);
 	short retunit=test.get_penultimate_unit();
+	BOOST_CHECK_EQUAL(initunit,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetUnitThree_Initialized_ReturnsMinusOne)
+{
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	short retunit=test.get_unit(3);
+	short expected=-1;
+	BOOST_CHECK_EQUAL(expected,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetUnitOne_Initialized_ReturnsInitUnit)
+{
+	unsigned short initunit=4;
+	PolymerChain test=Initialize_PolymerChain_Unit4();
+	short retunit=test.get_unit(3);
+	BOOST_CHECK_EQUAL(initunit,retunit);
+}
+
+BOOST_AUTO_TEST_CASE(GetUnitOne_InitializedAndCopyConstruct_ReturnsInitUnit)
+{
+	unsigned short initunit=4;
+	PolymerChain test(Initialize_PolymerChain_Unit4());
+	short retunit=test.get_unit(3);
 	BOOST_CHECK_EQUAL(initunit,retunit);
 }
 
