@@ -10,7 +10,5 @@ Molecule.o: src/Molecule.cpp
 	c++ ${INC} --coverage -c $^ -o $@
 
 gtest_main.a:
-	cd googletest/make
-	make gtest_main.a
-	cp gtest_main.a ../..
+	make -C googletest/make gtest_main.a
 
