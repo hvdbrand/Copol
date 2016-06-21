@@ -6,11 +6,12 @@
  */
 
 //#define BOOST_TEST_MODULE First Boost Tests
-#include <boost/test/included/unit_test.hpp>
-using namespace boost::unit_test;
+//#include <boost/test/included/unit_test.hpp>
+//using namespace boost::unit_test;
+#include "googletest/include/gtest/gtest.h"
 #include "../src/main.h"
 
-struct PolymerChain_Tests
+/* struct PolymerChain_Tests
 {
 
 };
@@ -122,12 +123,21 @@ BOOST_AUTO_TEST_CASE(ExactString_InitializedWithExactString_ReturnsSameString)
 }
 
 
-BOOST_AUTO_TEST_SUITE_END();
+BOOST_AUTO_TEST_SUITE_END(); */
 
-test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
-{
+//test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
+/*{
   return 0;
+}*/
+
+TEST(FactorialTest, HandlesZeroInput) {
+  EXPECT_EQ(1, 1);
 }
 
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
 
 

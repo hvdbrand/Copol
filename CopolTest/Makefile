@@ -1,6 +1,6 @@
 INC = -I./src -I/usr/include
 
-CopolTest: CopolTest.o Molecule.o
+CopolTest: CopolTest.o Molecule.o googletest/make/gtest_main.a
 	c++ --coverage $^ -o $@
 
 CopolTest.o: tests/CopolTest.cpp
@@ -9,9 +9,9 @@ CopolTest.o: tests/CopolTest.cpp
 Molecule.o: src/Molecule.cpp
 	c++ ${INC} --coverage -c $^ -o $@
 
-gtest_main.a:
+googletest/make/gtest_main.a:
 	make -C googletest/make gtest_main.a
 	
-gmock_main.a:
+googlemock/make/gmock_main.a:
 	make -C googlemock/make gmock_main.a
 
