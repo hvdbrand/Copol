@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(GetUnitThree_Initialized_ReturnsMinusOne)
 	BOOST_CHECK_EQUAL(expected,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUnitOne_Initialized_ReturnsInitUnit)
+BOOST_AUTO_TEST_CASE(GetUnitZero_Initialized_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
@@ -105,7 +105,7 @@ BOOST_AUTO_TEST_CASE(GetUnitOne_Initialized_ReturnsInitUnit)
 	BOOST_CHECK_EQUAL(initunit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUnitOne_InitializedAndCopyConstruct_ReturnsInitUnit)
+BOOST_AUTO_TEST_CASE(GetUnitZero_InitializedAndCopyConstruct_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test(Initialize_PolymerChain_Unit4());
