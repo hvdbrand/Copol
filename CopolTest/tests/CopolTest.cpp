@@ -5,135 +5,121 @@
  *      Author: HBrand
  */
 
-//#define BOOST_TEST_MODULE First Boost Tests
-//#include <boost/test/included/unit_test.hpp>
-//using namespace boost::unit_test;
 #include "gtest/gtest.h"
 #include "../src/main.h"
 
-/* struct PolymerChain_Tests
-{
-
-};
-
-BOOST_FIXTURE_TEST_SUITE(PolymerChain_TestSuite,PolymerChain_Tests);
+namespace  PolymerChain_Tests {
 
 PolymerChain Initialize_PolymerChain_Unit4()
 {
 	return PolymerChain(4);
 }
 
-BOOST_AUTO_TEST_CASE(CallGetLength_InitializedWithSingleUnit_ReturnsOne)
+TEST(PolymerChain_Tests,CallGetLength_InitializedWithSingleUnit_ReturnsOne)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int len=test.get_length();
 	unsigned int expected=1;
-	BOOST_CHECK_EQUAL(expected,len);
+	ASSERT_EQ(expected,len);
 }
 
-BOOST_AUTO_TEST_CASE(GetNumberOfunitsDiffers_InitializedWithSingleUnit_ReturnsZero)
+TEST(PolymerChain_Tests,GetNumberOfunitsDiffers_InitializedWithSingleUnit_ReturnsZero)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int units=test.get_units_of_type(3);
 	unsigned int expected=0;
-	BOOST_CHECK_EQUAL(expected,units);
+	ASSERT_EQ(expected,units);
 }
 
-BOOST_AUTO_TEST_CASE(GetNumberOfUnitsSame_InitializedWithSingleUnit_ReturnsOne)
+TEST(PolymerChain_Tests,GetNumberOfUnitsSame_InitializedWithSingleUnit_ReturnsOne)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int units=test.get_units_of_type(4);
 	unsigned int expected=1;
-	BOOST_CHECK_EQUAL(expected,units);
+	ASSERT_EQ(expected,units);
 }
 
-BOOST_AUTO_TEST_CASE(GetInitialUnit_InitializedWithSingleUnit_ReturnsInitUnit)
+TEST(PolymerChain_Tests,GetInitialUnit_InitializedWithSingleUnit_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int retunit=test.get_initial_unit();
-	BOOST_CHECK_EQUAL(initunit,retunit);
+	ASSERT_EQ(initunit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedWithSingleUnit_ReturnsInitUnit)
+TEST(PolymerChain_Tests,GetUltimateUnit_InitializedWithSingleUnit_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned int retunit=test.get_ultimate_unit();
-	BOOST_CHECK_EQUAL(initunit,retunit);
+	ASSERT_EQ(initunit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetPenUltimateUnit_InitializedWithSingleUnit_ReturnsMinusOne)
+TEST(PolymerChain_Tests,GetPenUltimateUnit_InitializedWithSingleUnit_ReturnsMinusOne)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	short retunit=test.get_penultimate_unit();
 	short expected=-1;
-	BOOST_CHECK_EQUAL(expected,retunit);
+	ASSERT_EQ(expected,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUltimateUnit_InitializedAndAddedUnit_ReturnsAddedUnit)
+TEST(PolymerChain_Tests,GetUltimateUnit_InitializedAndAddedUnit_ReturnsAddedUnit)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned short added_unit=2;
 	test.add_molecule_unit(added_unit);
 	short retunit=test.get_ultimate_unit();
-	BOOST_CHECK_EQUAL(added_unit,retunit);
+	ASSERT_EQ(added_unit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetPenultimateUnit_InitializedAndAddedUnit_ReturnsInitUnit)
+TEST(PolymerChain_Tests,GetPenultimateUnit_InitializedAndAddedUnit_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	unsigned short added_unit=2;
 	test.add_molecule_unit(added_unit);
 	short retunit=test.get_penultimate_unit();
-	BOOST_CHECK_EQUAL(initunit,retunit);
+	ASSERT_EQ(initunit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUnitThree_Initialized_ReturnsMinusOne)
+TEST(PolymerChain_Tests,GetUnitThree_Initialized_ReturnsMinusOne)
 {
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	short retunit=test.get_unit(3);
 	short expected=-1;
-	BOOST_CHECK_EQUAL(expected,retunit);
+	ASSERT_EQ(expected,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUnitZero_Initialized_ReturnsInitUnit)
+TEST(PolymerChain_Tests,GetUnitZero_Initialized_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test=Initialize_PolymerChain_Unit4();
 	short retunit=test.get_unit(0);
-	BOOST_CHECK_EQUAL(initunit,retunit);
+	ASSERT_EQ(initunit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(GetUnitZero_InitializedAndCopyConstruct_ReturnsInitUnit)
+TEST(PolymerChain_Tests,GetUnitZero_InitializedAndCopyConstruct_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	PolymerChain test(Initialize_PolymerChain_Unit4());
 	short retunit=test.get_unit(0);
-	BOOST_CHECK_EQUAL(initunit,retunit);
+	ASSERT_EQ(initunit,retunit);
 }
 
-BOOST_AUTO_TEST_CASE(ExactString_InitializedWithExactString_ReturnsSameString)
+TEST(PolymerChain_Tests,ExactString_InitializedWithExactString_ReturnsSameString)
 {
 	string initstring="030512891601";
 	PolymerChain test(initstring);
 	string retstring=test.exact_string();
-	BOOST_CHECK_EQUAL(initstring,retstring);
+	ASSERT_EQ(initstring,retstring);
 }
 
-
-BOOST_AUTO_TEST_SUITE_END(); */
-
-//test_suite* init_unit_test_suite( int /*argc*/, char* /*argv*/[] )
-/*{
-  return 0;
-}*/
 
 TEST(FactorialTest, HandlesZeroInput) {
   EXPECT_EQ(1, 1);
 }
 
+};
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
