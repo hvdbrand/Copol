@@ -11,4 +11,7 @@ Molecule.o: src/Molecule.cpp
 
 gtest_main.a:
 	make -C googletest/make gtest_main.a
+	
+gmock_main.a:
+	make -C googlemock/make gmock_main.a
 
