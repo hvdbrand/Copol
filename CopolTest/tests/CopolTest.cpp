@@ -8,7 +8,7 @@
 //#define BOOST_TEST_MODULE First Boost Tests
 //#include <boost/test/included/unit_test.hpp>
 //using namespace boost::unit_test;
-#include "include/gtest/gtest.h"
+#include "gtest/gtest.h"
 #include "../src/main.h"
 
 /* struct PolymerChain_Tests
