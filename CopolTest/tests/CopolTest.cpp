@@ -102,7 +102,7 @@ TEST(PolymerChain_Tests,GetUnitZero_InitializedAndCopyConstruct_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
 	const PolymerChain test1=Initialize_PolymerChain_Unit4();
-	PolymerChain test(&test1);
+	PolymerChain test(test1);
 	short retunit=test.get_unit(0);
 	ASSERT_EQ(initunit,retunit);
 }
