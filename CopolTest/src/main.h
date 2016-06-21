@@ -26,6 +26,7 @@ using namespace std;
 
 // Add header files for classes
 #include "Molecule.h"
+#include "BaseMolecules.h"
 #include "constants.h"
 using namespace constants;
 

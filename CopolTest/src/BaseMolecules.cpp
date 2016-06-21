@@ -1,5 +1,4 @@
-#include "BaseMolecules.h"
-#include "../main.h"
+#include "main.h"
 
 BaseMolecules::~BaseMolecules()
 {
