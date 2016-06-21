@@ -101,7 +101,8 @@ TEST(PolymerChain_Tests,GetUnitZero_Initialized_ReturnsInitUnit)
 TEST(PolymerChain_Tests,GetUnitZero_InitializedAndCopyConstruct_ReturnsInitUnit)
 {
 	unsigned short initunit=4;
-	PolymerChain test(Initialize_PolymerChain_Unit4());
+	const PolymerChain test1=Initialize_PolymerChain_Unit4();
+	PolymerChain test(&test1);
 	short retunit=test.get_unit(0);
 	ASSERT_EQ(initunit,retunit);
 }
@@ -114,10 +115,6 @@ TEST(PolymerChain_Tests,ExactString_InitializedWithExactString_ReturnsSameString
 	ASSERT_EQ(initstring,retstring);
 }
 
-
-TEST(FactorialTest, HandlesZeroInput) {
-  EXPECT_EQ(1, 1);
-}
 
 };
 
