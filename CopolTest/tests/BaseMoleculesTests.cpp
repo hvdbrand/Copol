@@ -23,7 +23,7 @@ TEST(BaseMoleculesTests,NumberOfMolecules_Initialized_ReturnsZero)
 TEST(BaseMoleculesTests,NameInDb_Initialized_ReturnsMinusOne)
 {
 	BaseMolecules basemol=EmptyBaseMolecules();
-	ASSERT_EQ(basemol.name_in_db("foo",5),-1);
+	ASSERT_EQ(basemol.name_in_db("foo",5),1);
 };
 
 TEST(BaseMoleculesTests,GetName_Initialized_ReturnsEmptyString)
