@@ -1,4 +1,5 @@
-INC = -I./src -I/usr/include
+INC = -I./src -I/usr/include -Igoogletest/include \
+      -Igooglemock/include 
 
 CopolTest: CopolTest.o Molecule.o googletest/make/gtest_main.a
 	c++ --coverage $^ -o $@
