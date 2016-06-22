@@ -6,6 +6,7 @@
  */
 
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
 #include "../src/main.h"
 
 int main(int argc, char **argv) {
