@@ -70,7 +70,7 @@ TEST_F(BaseMoleculesTests_WithPolymerChain,GetChainMass_FakePolymerChain_Returns
 	BaseMolecules basemol=EmptyBaseMolecules();
 	basemol.add_molecule("Testmol",Monomers,15);
 
-	EXPECT_CALL(*polychain,get_length()).Times(1).WillOnce(testing::Return(2));
+	EXPECT_CALL(*polychain,get_length()).Times(1).WillOnce(testing::Return(1));
 	EXPECT_CALL(*polychain,get_unit(0)).Times(1).WillOnce(testing::Return(0));
 	ASSERT_EQ(basemol.get_chain_mass(polychain),15);
 	delete polychain;
