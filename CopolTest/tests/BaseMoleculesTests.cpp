@@ -6,6 +6,7 @@
  */
 
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
 #include "../src/main.h"
 
 namespace BaseMoleculesTests {
@@ -42,6 +43,12 @@ TEST(BaseMoleculesTests,GetMass_Initialized_ReturnsZero)
 {
 	BaseMolecules basemol=EmptyBaseMolecules();
 	ASSERT_EQ(basemol.get_mass(5),0);
+};
+
+class FakePolymerChain : public PolymerChain {
+	public:
+		MOCK_CONST_METHOD0(get_length,unsigned int());
+		MOCK_CONST_METHOD1(get_unit,short(unsigned int));
 };
 
 }

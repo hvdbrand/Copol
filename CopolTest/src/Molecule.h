@@ -99,14 +99,14 @@ public:
     /** \brief Constructor which creates a one unit PolymerChain.
      *  \param i_radical Number of the first Molecule to add to the PolymerChain.
      */
-    PolymerChain(unsigned short i_radical);
+    virtual PolymerChain(unsigned short i_radical);
     /** \brief Constructor which creates PolymerChain using an exact string.
      *  \param i_string String containing the components of the polymer as created by
      *  \ref exact_string().
      */
-    PolymerChain(string i_string);
-    PolymerChain(const PolymerChain& old);
-    /* The desctructor doesn't need to do anything, the pointers are to the basemolecule objects.
+    virtual PolymerChain(string i_string);
+    virtual PolymerChain(const PolymerChain& old);
+    /* The destructor doesn't need to do anything, the pointers are to the basemolecule objects.
      * The vector should be cleared automatically. */
     virtual ~PolymerChain();
     /** \brief Return the number of Molecules of a specific type.
@@ -115,7 +115,7 @@ public:
      */
     unsigned int get_units_of_type(unsigned short check_mole);
     /** \brief Return the number of units in the PolymerChain. */
-    unsigned int get_length() const;
+    virtual unsigned int get_length() const;
     /** \brief Adds a Molecule to the back of the PolymerChain.
      *  \param mole_to_add Number of the Molecule that should be added.
      */
@@ -138,7 +138,7 @@ public:
      *  \return The number of the Molecule in BaseMolecules at a specific position in the PolymerChain.
      *  If the chain doesn't have that enough molecules, -1 is returned.
      */
-    short get_unit(unsigned unit_num) const;
+    virtual short get_unit(unsigned unit_num) const;
     /** \brief Returns a string describing precisely the polymer chain.
      *
      *  This functions converts the PolymerChain to a string of numbers.
