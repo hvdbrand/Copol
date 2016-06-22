@@ -51,5 +51,15 @@ class FakePolymerChain : public PolymerChain {
 		MOCK_CONST_METHOD1(get_unit,short(unsigned int));
 };
 
+TEST(BaseMoleculesTests,GetChainMass_FakePolymerChain_ReturnsFifteen)
+{
+	BaseMolecules basemol=EmptyBaseMolecules();
+	basemol.add_molecule("Testmol",Monomers,15);
+	FakePolymerChain polychain=new FakePolymerChain();
+	EXPECT_CALL(polychain,get_length()).Times(1).WillOnce(Return(1));
+	EXPECT_CALL(polychain,get_unit(0)).Times(1).WillOnce(Return(0));
+	ASSERT_EQ(basemol.get_chain_mass(&polychain),15);
+};
+
 }
 
