@@ -55,16 +55,28 @@ class FakePolymerChain : public PolymerChain {
 		MOCK_CONST_METHOD1(get_unit,short(unsigned int));
 };
 
-TEST(BaseMoleculesTests,GetChainMass_FakePolymerChain_ReturnsFifteen)
+class BaseMoleculesTests_WithPolymerChain : public ::testing::Test {
+ protected:
+	 FakePolymerChain *polychain;
+  virtual void SetUp() {
+	  polychain=new FakePolymerChain();
+  }
+
+  virtual void TearDown() {delete polychain;}
+};
+
+TEST_F(BaseMoleculesTests_WithPolymerChain,GetChainMass_FakePolymerChain_ReturnsFifteen)
 {
 	BaseMolecules basemol=EmptyBaseMolecules();
 	basemol.add_molecule("Testmol",Monomers,15);
-	FakePolymerChain *polychain=new FakePolymerChain();
+
 	EXPECT_CALL(*polychain,get_length()).Times(1).WillOnce(testing::Return(2));
 	EXPECT_CALL(*polychain,get_unit(0)).Times(1).WillOnce(testing::Return(0));
 	ASSERT_EQ(basemol.get_chain_mass(polychain),15);
 	delete polychain;
 };
+
+
 
 }
 
