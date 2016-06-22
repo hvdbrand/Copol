@@ -99,13 +99,13 @@ public:
     /** \brief Constructor which creates a one unit PolymerChain.
      *  \param i_radical Number of the first Molecule to add to the PolymerChain.
      */
-    virtual PolymerChain(unsigned short i_radical);
+    PolymerChain(unsigned short i_radical);
     /** \brief Constructor which creates PolymerChain using an exact string.
      *  \param i_string String containing the components of the polymer as created by
      *  \ref exact_string().
      */
-    virtual PolymerChain(string i_string);
-    virtual PolymerChain(const PolymerChain& old);
+    PolymerChain(string i_string);
+    PolymerChain(const PolymerChain& old);
     /* The destructor doesn't need to do anything, the pointers are to the basemolecule objects.
      * The vector should be cleared automatically. */
     virtual ~PolymerChain();
