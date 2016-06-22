@@ -2,7 +2,7 @@ INC = -I./src -I/usr/include -Igoogletest/include \
       -Igooglemock/include
 LINK = -L/lib64 -lpthread 
 
-CopolTest: BaseMoleculesTests.o PolymerChainTests.o CopolTest.o Molecule.o BaseMolecules.o googletest/make/gtest_main.a
+CopolTest: BaseMoleculesTests.o PolymerChainTests.o CopolTest.o Molecule.o BaseMolecules.o googlemock/make/gmock_main.a
 	c++ ${LINK} --coverage $^ -o $@
 
 CopolTest.o: tests/CopolTest.cpp
