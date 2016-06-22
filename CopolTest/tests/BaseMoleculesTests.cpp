@@ -48,7 +48,7 @@ TEST(BaseMoleculesTests,GetMass_Initialized_ReturnsZero)
 class FakePolymerChain : public PolymerChain {
 	public:
 		FakePolymerChain()
-		{PolymerChain(0);}
+		{PolymerChain(0US);}
 
 		MOCK_CONST_METHOD0(get_length,unsigned int());
 		MOCK_CONST_METHOD1(get_unit,short(unsigned int));
