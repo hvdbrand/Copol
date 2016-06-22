@@ -55,10 +55,10 @@ TEST(BaseMoleculesTests,GetChainMass_FakePolymerChain_ReturnsFifteen)
 {
 	BaseMolecules basemol=EmptyBaseMolecules();
 	basemol.add_molecule("Testmol",Monomers,15);
-	FakePolymerChain polychain=new FakePolymerChain();
-	EXPECT_CALL(polychain,get_length()).Times(1).WillOnce(testing::Return(1));
-	EXPECT_CALL(polychain,get_unit(0)).Times(1).WillOnce(testing::Return(0));
-	ASSERT_EQ(basemol.get_chain_mass(&polychain),15);
+	FakePolymerChain *polychain=new FakePolymerChain(0);
+	EXPECT_CALL(*polychain,get_length()).Times(1).WillOnce(testing::Return(1));
+	EXPECT_CALL(*polychain,get_unit(0)).Times(1).WillOnce(testing::Return(0));
+	ASSERT_EQ(basemol.get_chain_mass(polychain),15);
 };
 
 }
