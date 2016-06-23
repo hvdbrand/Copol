@@ -2,7 +2,7 @@
 
 node {
     echo  pwd()
-    dir('cd Copol/CopolTest') {
+    dir('CopolTest') {
 		sh 'make'
     	sh './CopolTest --gtest_output=xml:gtestresults.xml'
     }
