@@ -1,6 +1,8 @@
 #!groovy
 
 node {
+    checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
+     userRemoteConfigs: [[url: 'https://github.com/hvdbrand/Copol.git']]])
     echo  pwd()
     dir('CopolTest') {
 		sh 'ls'
