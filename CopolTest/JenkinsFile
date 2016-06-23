@@ -5,7 +5,8 @@ node {
      userRemoteConfigs: [[url: 'https://github.com/hvdbrand/Copol.git']]])
     echo  pwd()
     dir('CopolTest') {
-		sh 'ls'
+		sh 'make'
     	sh './CopolTest --gtest_output=xml:gtestresults.xml'
+    	sh 'scripts/awk_introduce_skipped'
     }
 }
