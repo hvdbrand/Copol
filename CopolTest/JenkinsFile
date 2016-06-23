@@ -2,4 +2,5 @@
 
 node {
     echo 'Hello from Pipeline'
+    pwd()
 }
