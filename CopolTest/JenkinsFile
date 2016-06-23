@@ -1,12 +1,21 @@
 #!groovy
 
 node {
+    stage 'Checkout'
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], 
      userRemoteConfigs: [[url: 'https://github.com/hvdbrand/Copol.git']]])
     echo  pwd()
     dir('CopolTest') {
+        stage 'Build'
 		sh 'make'
+		stage 'Run test'
     	sh './CopolTest --gtest_output=xml:gtestresults.xml'
-    	sh 'scripts/awk_introduce_skipped'
+    	stage 'Process tests'
+    	sh 'bash scripts/awk_introduce_skipped'
+    	stage 'Process coverage'
+    	sh 'lcov --capture --directory . --output-file coverage.info'
+		sh 'python /usr/lib/python2.7/site-packages/lcov_cobertura.py coverage.info --output coverage.xml --demangle --excludes ".*usr.include.*" --excludes ".*gtest.*" --excludes ".*gmock.*"'
     }
+    stage 'Archive'
+    archive 'CopolTest/gtestresults.xml,CopolTest/gtestresults-skipped.xml,CopolTest/coverage.info'
 }
